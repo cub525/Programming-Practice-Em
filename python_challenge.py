@@ -6,7 +6,6 @@ Created on Mon Oct 28 15:06:45 2019
 """
 from collections import Counter
 import re
-from lxml import html
 import urllib3
 
 def translate_string(n,string):
