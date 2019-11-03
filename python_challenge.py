@@ -14,8 +14,7 @@ def channel_solution():
     http = urllib3.PoolManager()
     r = http.request('GET',url)
     with open('channel.zip','wb') as out:
-         
-    print(z)
+        print(z)
     
     
      
@@ -77,6 +76,12 @@ def web_lookup(initial_url):
             
     except KeyboardInterrupt:
         pass
+
+#def zip_read(file):
+zipobj = ZipFile('channel.zip')
+with zipobj.open('90052.txt') as txtfile:
+    with open(txtfile) as txt:
+        re.search('The next nothing is ([0-9]+)')
 
 if __name__ == '__main__':
 #    translate_string_dad(2,'AaBbcdefghijklmnopqrstuvwxyz')
