@@ -77,14 +77,24 @@ def web_lookup(initial_url):
     except KeyboardInterrupt:
         pass
 
-#def zip_read(file):
-zipobj = ZipFile('channel.zip')
-with zipobj.open('90052.txt') as txtfile:
-    with open(txtfile) as txt:
-        re.search('The next nothing is ([0-9]+)')
-
+def zip_read(file1):
+    zipobj = ZipFile(file1)
+    file = '90052.txt'
+    comments = ''
+    try:
+        while 1:
+            with zipobj.open(file,'r') as txtfile:
+                zinfo = zipobj.getinfo(file)
+                comments += zinfo.comment.decode('utf-8')
+                txt = txtfile.read().decode('utf-8')
+                nums = re.search('Next nothing is ([0-9]+)',txt)
+                num1 = nums.group(1)
+                file = str(num1)+'.txt'
+    except:
+        print(comments)
 if __name__ == '__main__':
 #    translate_string_dad(2,'AaBbcdefghijklmnopqrstuvwxyz')
 #    translate_string(2,'AaBbcdefghijklmnopqrstuvwxyz')
 #    web_lookup('http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=826836357923542345463246345623452345')
-    channel_solution()
+#    channel_solution()
+    zip_read('channel.zip')
