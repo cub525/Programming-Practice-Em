@@ -8,6 +8,7 @@ from collections import Counter
 import re
 import urllib3
 from zipfile import ZipFile
+from PIL import Image
 
 def channel_solution():
     url = 'http://www.pythonchallenge.com/pc/def/channel.zip'
@@ -91,10 +92,19 @@ def zip_read(file1):
                 num1 = nums.group(1)
                 file = str(num1)+'.txt'
     except:
-        print(comments)
+        print(comments )
 if __name__ == '__main__':
 #    translate_string_dad(2,'AaBbcdefghijklmnopqrstuvwxyz')
 #    translate_string(2,'AaBbcdefghijklmnopqrstuvwxyz')
 #    web_lookup('http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=826836357923542345463246345623452345')
 #    channel_solution()
-    zip_read('channel.zip')
+#    zip_read('channel.zip')
+    
+    pngfile = Image.open("oxygen.png")
+    data = [chr(pngfile.getpixel((i,47))[0]) for i in range(0,pngfile.size[0],7)]
+    
+    copypaste = [105, 110, 116, 101, 103, 114, 105, 116, 121]
+    name = "".join([chr(i) for i in copypaste])
+     
+    print(name)
+        
