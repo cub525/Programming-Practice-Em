@@ -16,7 +16,6 @@ C = 200 #Equivalent Capacitence of capacitors
 V = 10 #Equivalent voltage of capacitors
 esr = .00001 #ESR of capacitors
 m = .015 #mass of projectile
-
 I = 10 #Amperage in the wires, might become iterable
 
 
