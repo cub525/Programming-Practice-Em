@@ -99,7 +99,14 @@ if __name__ == '__main__':
 #    web_lookup('http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=826836357923542345463246345623452345')
 #    channel_solution()
 #    zip_read('channel.zip')
-    
+
+# solution to integrity.html
+# bz2.decompress(b'BZh91AY&SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07<]\xc9\x14\xe1BA\x06\xbe\x084')
+#Out[3]: b'huge'
+#bz2.decompress(b'BZh91AY&SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13<]\xc9\x14\xe1BBP\x91\xf08')
+#Out[4]: b'file'
+
+#x`
     pngfile = Image.open("oxygen.png")
     data = [chr(pngfile.getpixel((i,47))[0]) for i in range(0,pngfile.size[0],7)]
     
