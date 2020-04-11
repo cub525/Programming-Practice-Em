@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Feb 12 13:45:16 2020
+Created on Wed Mar  4 20:42:45 2020
 
 @author: EOL
 """
+
 import matplotlib.pyplot as plt
 import math
 #All units are in base metric unless stated otherwise, millimeters will be used for
@@ -34,13 +35,10 @@ try:
     while t<10 and x<.61:
         xd = xdd*dt + xd
         x = xd*dt + x
-        r = rp + 2*rc*x
-        xdd = (4e-7*(v/r)**2)/m
+        xdd = x**-2*.5*math.log(x**2+l**2)+l-math.log(x)
         xl.append(x)
         xld.append(xd)
         xldd.append(xdd)
-        lv.append(v)
-        lr.append(r)
         t = t+dt
         lt.append(t)
 except KeyboardInterrupt:
@@ -51,6 +49,4 @@ print(dv)
 plt.plot(lt,xl,label = 'position')
 plt.plot(lt,xld, label = 'velocity')
 plt.plot(lt,xldd, label = 'acceleration')
-plt.plot(lt,lv, label = 'Voltage')
-plt.plot(lt,lr, label = 'Resistance')
 plt.legend()
