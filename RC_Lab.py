@@ -17,9 +17,11 @@ def solve_lab(data,r,C):
     plt.plot(data['Time'], np.poly1d(np.polyfit(data['Time'], lnvolts, 1))
     (data['Time']),label='Best fit line\nr^2={0}\npercent error = {1}%'.format(rsqrd,percenterror))
     plt.plot(0,0,color='w',label = 'r = {0}\nC = {1}'.format(r,C))
+    plt.ylabel('Natural log of voltage')
+    plt.xlabel('Time')
+    plt.title('Emmett Hart RC Lab: Ln Voltage vs Time')
     plt.legend()
     plt.show()
 
 if __name__ == '__main__':
     solve_lab(file,r,C)
-    solve_lab('RC_Lab_casey.csv',270,.025)
