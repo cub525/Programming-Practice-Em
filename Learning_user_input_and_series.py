@@ -53,9 +53,9 @@ def frac_calc():
 if __name__ == '__main__':
     try:
         while True:
-            mult_table(5,9)
+            frac_calc()
             q = input('Do you want to quit?(y,n):')
-            if q == 'y':
+            if q.upper == 'Y':
                 print('finished')
                 break
     except KeyboardInterrupt:
