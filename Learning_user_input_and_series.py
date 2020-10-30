@@ -6,6 +6,8 @@ Created on Fri Sep 20 13:54:10 2019
 """
 from fractions import Fraction
 def Even_Odd(n):
+    """ States if a number is even or odd
+    n: an integer"""
     #Add input clause here
     if n % 2 == 0:
         print('Your Number is Even')
