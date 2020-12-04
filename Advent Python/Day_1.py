@@ -9,25 +9,23 @@ with open('input.txt','r') as f:
     list_ = [int(line) for line in f]
 
 def find_two(iterable):
-    '''
+    """
+    Find two numbers in iterable that sum to 2020, then multiply them.
     
     Type: Function
     
     -----
     
-    find two numbers in iterable that sum to 2020, then multiply them
-    
     Parameters
     ----------
     iterable : iterable object
         
-
     Returns
     -------
     integer : int
         an integer equalling the multiple of the two elements
 
-    '''
+    """
     for i in iterable:
         try: 
             if iterable.index(2020 - i):
