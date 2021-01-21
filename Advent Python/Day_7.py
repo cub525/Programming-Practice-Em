@@ -8,18 +8,17 @@ Created on Fri Jan 15 14:53:26 2021
 import re
 from typing import Dict
 from dataclasses import dataclass, field
-
 bags = {}
 
 @dataclass(unsafe_hash=True)
 class Bag(object):
     color: str
-    contents: Dict[object, int] = field(default_factory=dict)
+    contents: Dict[str, int] = field(default_factory=dict)
 
     def total_contents(self):
         total = 0
         for key in self.contents:
-            print(bags[key])
+            # print(bags[key])
             total +=  (bags[key].total_contents()+1)*self.contents[key]
         return total
 
