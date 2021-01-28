@@ -8,10 +8,9 @@ Created on Mon Jan 18 14:53:29 2021
 import dataclasses as dtcls
 from typing import List
 
-comms = []
+
 with open("input_day_8.txt","r") as f:
-    for line in f:
-        comms.append(line.rstrip())
+    comms = [line.rstrip() for line in f]
 
 @dtcls.dataclass()
 class GameConsole:
@@ -23,30 +22,49 @@ class GameConsole:
 
     def execute(self):
         while True:
+            self.used.append(self.index)
             if (cmd := self.commands[self.index][:3]) == "nop":
-                self.used.append(self.index)
                 self.index += 1
             elif cmd == "acc":
                 self.accumulator += int(self.commands[self.index][4:])
-                self.used.append(self.index)
                 self.index += 1
             elif cmd == "jmp":
                 self.index += int(self.commands[self.index][4:])
-                if self.index in self.used:
-                    return self.accumulator
+            if self.index in self.used:
+                return self.accumulator
 
-    def backwards(self):
-        self.index = len(self.commands) - 1
-        self.used_ = []
-        while True:
-            if (cmd := self.commands[self.index][:3]) == "nop" or cmd == "acc":
-                self.used_.append(self.index)
-                self.index -= 1
-            elif cmd == "jmp":
-                self.index -= int(self.commands[self.index][4:])
-                if self.index in self.used:
-                    break
+    def debug(self):
+        change_list = []
+        try:
+            while True:
+                if not self.index in change_list:
+                    self.used.append(self.index)
+                    change_list.append(self.index)
+                    if (cmd := self.commands[self.index][:3]) == "jmp":
+                        self.index += 1
+                    elif cmd == "acc":
+                        self.accumulator += int(self.commands[self.index][4:])
+                        self.index += 1
+                    elif cmd == "nop":
+                        self.index += int(self.commands[self.index][4:])
+                        # if self.index in self.used:
+                        #     pass
+                    self.execute()
+                    self.accumulator = 0
+                    self.index = 0
+                    self.used.clear()
+                else:
+                    self.used.append(self.index)
+                    if (cmd := self.commands[self.index][:3]) == "nop":
+                        self.index += 1
+                    elif cmd == "acc":
+                        self.accumulator += int(self.commands[self.index][4:])
+                        self.index += 1
+                    elif cmd == "jmp":
+                        self.index += int(self.commands[self.index][4:])
+        except IndexError:
+            return self.accumulator
         
 
 g = GameConsole(comms)
-solution = g.execute()
+solution = g.debug()

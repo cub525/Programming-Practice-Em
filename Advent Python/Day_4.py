@@ -7,12 +7,46 @@ Created on Fri Dec  4 10:35:37 2020
 
 # 204 is too low
 import re
+import dataclasses as dtcls
 count = 0
 fields = set()
 passport = ''
 valid = {'byr','iyr','eyr','hgt','hcl','ecl','pid'}
 
+@dtcls.dataclass()
+class Passport:
+    byr: int
+    iyr: int
+    eyr: int
+    ecl: str
+    hcl: str
+    pid: str
+    hgt: str
+    cid: str = 0
 
+    def __post_init__(self):
+        self.byr = int(self.byr)
+        self.iyr = int(self.iyr)
+        self.eyr = int(self.eyr)
+        if 1920 >= self.byr >= 2002:
+            raise ValueError("Invalid birth year")
+        if 2010 >= self.iyr >= 2020:
+            raise ValueError("Invalid issue year")
+        if 2020 >= self.eyr >= 2030:
+            raise ValueError("Invalud expiration year")
+        if self.ecl not in {'amb','blu','brn','gry','grn','hzl','oth'}:
+            raise ValueError("Invalid Eye color")
+        if not re.match('#[a-f\d]{6}', self.hcl):
+            raise ValueError("Invalid Hair Color")
+        if not re.match('\d{9}', self.pid):
+            raise ValueError("Invalid pid")
+        if 'cm' in self.hgt and 150 >= int(*re.findall('d+', self.hgt)) >= 193:
+            raise ValueError("Invalid Height (cm)")
+        elif 59 >= int(*re.findall('\d+', self.hgt)) >= 76:
+            raise ValueError("Invalid Height (in)")
+
+            
+            
 
 def validate_field(field_dict_):
     if 1920 >= int(field_dict_['byr']) >= 2002:
@@ -53,15 +87,20 @@ def validate_passport(passport):
             return True
     else:
         return False
-    
-    
-    
+
+
+all_dicts = []
+valid_passports = []
 with open('input_day_4.txt','r') as f:
     for line in f:
         if line != '\n':
-            passport += ' ' + line[:-1]
+            passport += ' ' + line.rstrip()
         else:
-            if validate_passport(passport) == True:
-                count += 1
-            passport = ''
+            field_dict = {i:j for i,j in re.findall('([a-z]{3}):(\S*)',passport)}
+            all_dicts.append(field_dict)
+            try:
+                valid_passports.append(Passport(**field_dict))
+            except (TypeError, ValueError) as inst:
+                print(inst.args)
+            
 
