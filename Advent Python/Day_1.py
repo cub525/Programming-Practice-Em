@@ -5,7 +5,9 @@ Created on Wed Dec  2 16:15:17 2020
 @author: janih
 """
 
-with open('input.txt','r') as f:
+import user
+
+with open(f'{user.path}/input.txt','r') as f:
     list_ = [int(line) for line in f]
 
 def find_two(iterable):
