@@ -23,7 +23,7 @@ pot_data = np.zeros(GRID_SHAPE)
 ppos = np.random.randint(1, min(SCREEN_DIMENSIONS), (2, NUM_PARTICLES), ).astype(float)
 pvel = np.zeros((2, NUM_PARTICLES))
 
- 
+
 def calc_pot(pos_data: np.ndarray):
     out = np.zeros(GRID_SHAPE)
     x,y = np.mgrid[slice(out.shape[2]), slice(out.shape[0])]
@@ -46,7 +46,7 @@ background.fill(BLACK)
 clock = pygame.time.Clock()
 try:
     while RUNNING:
-    
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 RUNNING = False
@@ -55,14 +55,14 @@ try:
         pot_data[:] = 0
         for p in ppos.T:
             pygame.draw.circle(window_surface, (255, 255, 255), p, 2)
-    
+
         pygame.display.update()
         pot_data, bin_data = calc_pot(ppos)
         pvel += pot_data[bin_data[1],:, bin_data[0]].T
         ppos += pvel
 except Exception as e:
     pygame.quit()
-    
+
     plt.pcolormesh(np.hypot(pot_data[:,1,:], pot_data[:,0,:]))
     plt.quiver(ppos[1] / CHUNK_SIZE, ppos[0] / CHUNK_SIZE, pvel[1], pvel[0])
     plt.colorbar()

@@ -455,9 +455,10 @@ static PyObject *__pyx_pf_7example_test(CYTHON_UNUSED PyObject *__pyx_self, unsi
 <pre class='cython code score-0 '>  __pyx_r = __pyx_v_y;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">16</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">17</span>: <span class="nd">@cython</span><span class="o">.</span><span class="n">cfunc</span></pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">18</span>: <span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="n">cython</span><span class="o">.</span><span class="n">uint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">cython</span><span class="o">.</span><span class="n">uint</span><span class="p">:</span></pre>
-<pre class='cython code score-0 '>static unsigned int __pyx_f_7example_test1(unsigned int __pyx_v_x) {
+<pre class="cython line score-0">&#xA0;<span class="">17</span>: <span class="nd">@cython</span><span class="o">.</span><span class="n">ccall</span></pre>
+<pre class="cython line score-20" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">18</span>: <span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="n">cython</span><span class="o">.</span><span class="n">uint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">cython</span><span class="o">.</span><span class="n">uint</span><span class="p">:</span></pre>
+<pre class='cython code score-20 '>static PyObject *__pyx_pw_7example_3test1(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
+static unsigned int __pyx_f_7example_test1(unsigned int __pyx_v_x, CYTHON_UNUSED int __pyx_skip_dispatch) {
   unsigned int __pyx_v_y;
   unsigned int __pyx_v_i;
   unsigned int __pyx_r;
@@ -466,6 +467,55 @@ static PyObject *__pyx_pf_7example_test(CYTHON_UNUSED PyObject *__pyx_self, unsi
 /* … */
   /* function exit code */
   __pyx_L0:;
+  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_7example_3test1(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
+static PyObject *__pyx_pw_7example_3test1(PyObject *__pyx_self, PyObject *__pyx_arg_x) {
+  unsigned int __pyx_v_x;
+  PyObject *__pyx_r = 0;
+  <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
+  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("test1 (wrapper)", 0);
+  assert(__pyx_arg_x); {
+    __pyx_v_x = <span class='pyx_c_api'>__Pyx_PyInt_As_unsigned_int</span>(__pyx_arg_x); if (unlikely((__pyx_v_x == (unsigned int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 18, __pyx_L3_error)</span>
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("example.test1", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_7example_2test1(__pyx_self, ((unsigned int)__pyx_v_x));
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* function exit code */
+  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_7example_2test1(CYTHON_UNUSED PyObject *__pyx_self, unsigned int __pyx_v_x) {
+  PyObject *__pyx_r = NULL;
+  <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
+  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("test1", 0);
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
+  __pyx_t_1 = __pyx_f_7example_test1(__pyx_v_x, 0); if (unlikely(__pyx_t_1 == ((unsigned int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 18, __pyx_L1_error)</span>
+  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_unsigned_int</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)</span>
+  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_2);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("example.test1", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
@@ -483,73 +533,4 @@ static PyObject *__pyx_pf_7example_test(CYTHON_UNUSED PyObject *__pyx_self, unsi
 </pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">23</span>:     <span class="k">return</span> <span class="n">y</span></pre>
 <pre class='cython code score-0 '>  __pyx_r = __pyx_v_y;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">24</span>: </pre>
-<pre class="cython line score-17" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">25</span>: <span class="k">cpdef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">test2</span><span class="p">(</span><span class="nb">unsigned</span> <span class="nb">int</span> <span class="n">x</span><span class="p">):</span></pre>
-<pre class='cython code score-17 '>static PyObject *__pyx_pw_7example_3test2(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
-static unsigned int __pyx_f_7example_test2(unsigned int __pyx_v_x, CYTHON_UNUSED int __pyx_skip_dispatch) {
-  unsigned int __pyx_r;
-  <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
-  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("test2", 0);
-/* … */
-  /* function exit code */
-  __pyx_L1_error:;
-  <span class='pyx_c_api'>__Pyx_WriteUnraisable</span>("example.test2", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
-  __pyx_r = 0;
-  __pyx_L0:;
-  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_7example_3test2(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
-static PyObject *__pyx_pw_7example_3test2(PyObject *__pyx_self, PyObject *__pyx_arg_x) {
-  unsigned int __pyx_v_x;
-  PyObject *__pyx_r = 0;
-  <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
-  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("test2 (wrapper)", 0);
-  assert(__pyx_arg_x); {
-    __pyx_v_x = <span class='pyx_c_api'>__Pyx_PyInt_As_unsigned_int</span>(__pyx_arg_x); if (unlikely((__pyx_v_x == (unsigned int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 25, __pyx_L3_error)</span>
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("example.test2", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7example_2test2(__pyx_self, ((unsigned int)__pyx_v_x));
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-
-  /* function exit code */
-  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_7example_2test2(CYTHON_UNUSED PyObject *__pyx_self, unsigned int __pyx_v_x) {
-  PyObject *__pyx_r = NULL;
-  <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
-  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("test2", 0);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
-  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_unsigned_int</span>(__pyx_f_7example_test2(__pyx_v_x, 0));<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("example.test2", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
-  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
-  return __pyx_r;
-}
-</pre><pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">26</span>:     <span class="k">return</span> <span class="n">test1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></pre>
-<pre class='cython code score-5 '>  __pyx_t_1 = __pyx_f_7example_test1(__pyx_v_x); if (unlikely(__pyx_t_1 == ((unsigned int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 26, __pyx_L1_error)</span>
-  __pyx_r = __pyx_t_1;
-  goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">27</span>: </pre>
-</div></body></html>
+</pre></div></body></html>
