@@ -24,9 +24,8 @@ def translate_string(n,string):
     alphabet_str = [chr(i) for i in range(97,123)]
     #Shift list and make dictionary
     renum_ord = [alphabet_str[i+(n-26)] for i in range(len(alphabet_str))]
-    dict1 = {alphabet_ord[i]:renum_ord[i] for i in range(len(alphabet_str))}
     # A totally equivalent line to the above (a little more pythonic, I think)
-    dict2 = {number:letter for (number,letter) in zip(alphabet_ord,renum_ord)}
+    dict1 = {number:letter for (number,letter) in zip(alphabet_ord,renum_ord)}
     test = str(string).translate(dict1)
     print(test)
 
@@ -39,7 +38,7 @@ def translate_string_dad(n,string):
     alphabet_str = [chr(i) for i in range(ord('a'),ord('z')+1)]
     alphabet_str2 = alphabet_str[:]
     #Shift list and maketrans
-    for i in range(n): alphabet_str2.append(alphabet_str2.pop(0)) 
+    for _ in range(n): alphabet_str2.append(alphabet_str2.pop(0)) 
     transrule = str.maketrans(''.join(alphabet_str),''.join(alphabet_str2))
     print(string.translate(transrule))
     
